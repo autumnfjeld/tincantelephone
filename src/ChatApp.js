@@ -1,11 +1,11 @@
-require('../styles/ChatApp.css');
 
 import React from 'react';
 import io from 'socket.io-client';
-import config from '../config';
+// import config from 'config';
 
 import Messages from './Messages';
 import ChatInput from './ChatInput';
+import './ChatApp.css';
 
 class ChatApp extends React.Component {
   socket = {};
@@ -15,7 +15,8 @@ class ChatApp extends React.Component {
     this.sendHandler = this.sendHandler.bind(this);
     
     // Connect to the server
-    this.socket = io(config.api, { query: `username=${props.username}` }).connect();
+    const api = 'https://tincantelephone-api.herokuapp.com/';
+    this.socket = io(api, { query: `username=${props.username}` }).connect();
 
     // Listen for messages from the server
     this.socket.on('server:message', message => {
