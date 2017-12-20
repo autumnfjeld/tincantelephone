@@ -1,5 +1,6 @@
 
 import React from 'react';
+import moment from 'moment';
 import ChatApp from './ChatApp';
 import './App.css';
 import './Login.css';
@@ -12,7 +13,8 @@ class App extends React.Component {
       username: '',
       group: 'Groupless',
       valid: false,
-      startChat: false
+      startChat: false,
+      siteUpdatedAt: moment().calendar().toLowerCase()
     };
 
     // Bind 'this' to event handlers. React ES6 does not do this by default
@@ -63,6 +65,7 @@ class App extends React.Component {
   render() {
     const valid = this.state.valid;
     const startChat = this.state.startChat;
+    const siteUpdatedAt = this.state.siteUpdatedAt;
 
     if (startChat) {
       // Form was submitted, now show the main App
@@ -75,27 +78,32 @@ class App extends React.Component {
 
     // Initial page load, show a simple login form
     return (
-      <form onSubmit={this.submitHandler} className="username-container">
-        <h1>TinCanTelephone</h1>
-        <div>
+      <div className="container">
+        <form onSubmit={this.submitHandler} className="username-container">
+          <h1>TinCanTelephone</h1>
+          <div>
+            <input
+              type="text"
+              placeholder="username"
+              onChange={this.usernameChangeHandler}
+              autoFocus
+              required />
           <input
-            type="text"
-            placeholder="username"
-            onChange={this.usernameChangeHandler}
-            autoFocus
-            required />
-        <input
-            type="text"
-            onChange={this.groupChangeHandler}
-            placeholder="group (optional)"
-            />
-        </div>
-        <p> Default group: Groupless </p>
-        <input type="submit" value="Submit" 
-          disabled={!valid}
-          className="btn-submit"
-        />
-      </form>
+              type="text"
+              onChange={this.groupChangeHandler}
+              placeholder="group (optional)"
+              />
+          </div>
+          <p> Default group: Groupless </p>
+          <input type="submit" value="Submit" 
+            disabled={!valid}
+            className="btn-submit"
+          />
+        </form>
+        <footer>
+          <span>Site v0.2.0 updated {siteUpdatedAt}</span>
+        </footer>
+      </div>
     );
   }
 }
