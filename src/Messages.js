@@ -16,6 +16,7 @@ class Messages extends React.Component {
           <Message
             key={i}
             username={message.username}
+            unixTimeStamp={message.unixTimeStamp}
             message={message.message}
             fromMe={message.fromMe} />
         );

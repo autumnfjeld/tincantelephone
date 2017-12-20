@@ -1,11 +1,18 @@
 
 import React from 'react';
 import io from 'socket.io-client';
+import moment from 'moment';
+import 'moment-timezone';
 // import config from 'config';
 
 import Messages from './Messages';
 import ChatInput from './ChatInput';
 import './ChatApp.css';
+
+/**
+ * Note: 'univeral' usage of moment timestamp can be used if serverside code node.js
+ * Unsure of best approach for time.....so will just go with moment.js
+ */
 
 class ChatApp extends React.Component {
   socket = {};
@@ -30,6 +37,9 @@ class ChatApp extends React.Component {
   sendHandler(message) {
     const messageObject = {
       username: this.props.username,
+      group: this.props.group,
+      // unix time UTC
+      unixTimeStamp: moment().unix(),
       message
     };
 
