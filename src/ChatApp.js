@@ -32,6 +32,15 @@ class ChatApp extends React.Component {
     this.socket.on('server:message', message => {
       this.addMessage(message);
     });
+
+   // Listen for past messages from the server.  Happens only on initial connection.
+    this.socket.on('server:pastMessages', messages => {
+      console.log('Got past messages', messages);
+      for (let msg of messages) {
+        this.addMessage(msg);
+      }
+      // TODO can kill this listener ?  or ?
+    });    
   }
 
   sendHandler(message) {
