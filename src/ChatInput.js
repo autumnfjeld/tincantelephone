@@ -32,6 +32,7 @@ class ChatInput extends React.Component {
           onChange={this.textChangeHandler}
           value={this.state.chatInput}
           placeholder="Write a message..."
+          autoFocus
           required />
       </form>
     );

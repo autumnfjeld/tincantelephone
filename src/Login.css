@@ -5,6 +5,10 @@
   margin-top: 10%;
 }
 
+.btn-submit:disabled {
+    color: hsl(0,0%,30%);
+}
+
 h1 {
   display: block;
 }
