@@ -5,7 +5,7 @@ import 'moment-timezone';
 class Message extends React.Component {
   render() {
     // Was the message sent by the current user?
-    // console.log('Message got this.props.unixTimeStamp', this.props);
+    // console.log('Message got this.props.fromMe', this.props.fromMe);
     const name = this.props.fromMe ? 'me' : this.props.username;
     const messageClassName = 'message-box' + (this.props.fromMe ? ' from-me' : '');
     const unixTimeStamp = this.props.unixTimeStamp;

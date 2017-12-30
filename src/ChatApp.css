@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  padding: 0 10px;
 }
 
 .messages {
@@ -16,6 +17,14 @@ h1 {
   margin: 0;
   background-color: #eee;
   color: green;
+}
+
+h5 {
+  font-weight: normal;
+}
+
+.chat-app.screen-saver {
+  display:none;
 }
 
 .chat-input {
@@ -53,7 +62,7 @@ h1 {
 .message-body {
   max-width: 80%;
   display: inline-block;
-  padding: 20px;
+  padding: 10px 14px;
   background-color: #eee;
   border: 1px;
   border-radius: 5px;
