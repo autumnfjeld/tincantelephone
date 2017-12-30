@@ -14,29 +14,28 @@ class App extends React.Component {
       group: 'Groupless',
       valid: false,
       startChat: false,
+      screenSaver: false,
       siteUpdatedAt: moment().calendar().toLowerCase()
     };
 
     // Bind 'this' to event handlers. React ES6 does not do this by default
     this.usernameChangeHandler = this.usernameChangeHandler.bind(this);
     this.groupChangeHandler = this.groupChangeHandler.bind(this);
-    // this.validatePassword = this.validatePassword.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
   }
 
   usernameChangeHandler(event) {
-    console.log('usernameChangeHandler() called', event.target.value);
+    // console.log('usernameChangeHandler() called', event.target.value);
     this.setState({ username: event.target.value }, () => {
       this.setState({ valid: true});
     });
   }
 
   groupChangeHandler(event) {
-    console.log('groupChangeHandler() called', event.target.value);
+    // console.log('groupChangeHandler() called', event.target.value);
     if (event.target.value) {
       this.setState({ group: event.target.value  }, () => {
-        console.log('finally  done setting this.state.group', this.state.group);
-        console.log('check username', this.state.username);
+        console.log('this.state.group done.   check username', this.state.username);
         if (this.state.username) {
           this.setState({ valid: true});
         }      
@@ -44,15 +43,7 @@ class App extends React.Component {
     } else {
       this.setState({ valid: true});
     }
-
   }
-
-  // validatePassword(){
-  //   if (this.state.password === this.state.group) {
-  //     // this.setState({ submitted: true, username: this.state.username });
-  //     this.setState({ valid: true});
-  //   }
-  // }
 
   submitHandler(event) {
     console.log('submitHandler this.state.password', event, this.state.username);
@@ -68,7 +59,7 @@ class App extends React.Component {
     const siteUpdatedAt = this.state.siteUpdatedAt;
 
     if (startChat) {
-      // Form was submitted, now show the main App
+      // Login form was submitted, now show the main App
       return (
         <ChatApp 
           username={this.state.username}

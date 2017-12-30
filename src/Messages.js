@@ -10,15 +10,17 @@ class Messages extends React.Component {
   }
 
   render() {
+    const currentUser = this.props.currentUser;
     // Loop through all the messages in the state and create a Message component
     const messages = this.props.messages.map((message, i) => {
+      const fromMe = currentUser === message.username ? true : false;
         return (
           <Message
             key={i}
             username={message.username}
             unixTimeStamp={message.unixTimeStamp}
             message={message.message}
-            fromMe={message.fromMe} />
+            fromMe={fromMe} />
         );
       });
 
