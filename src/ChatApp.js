@@ -56,7 +56,6 @@ class ChatApp extends React.Component {
     // Listen for keybaord input to unblock screenSaver
   keydownListener(event){
     // console.log('keydownListener', event.key);
-    console.log('this.state.screenSaver', this.state.screenSaver)
     // If screenSaver is active check for awakeCode
     if (this.state.screenSaver) {
       this.setState({awakeCode: this.state.awakeCode + event.key}, () => {
@@ -90,7 +89,9 @@ class ChatApp extends React.Component {
 
   componentDidMount() {
     // Set up timer for inactivity check
-    this.interval = setInterval(this.tick, this.state.timeOut, this);
+    if (this.props.group === 'henrisaysmeow') {
+      this.interval = setInterval(this.tick, this.state.timeOut, this);
+    }
   }
 
   componentWillUnmount() {
